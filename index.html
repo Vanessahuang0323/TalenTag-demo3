@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TalenTag</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- 1. 首頁 -->
+    <section id="home" class="page active">
+      <div class="logo-block">
+        <div class="logo-icon"></div>
+        <h1 class="logo-title">TalenTag</h1>
+        <div class="logo-desc"><span class="ai">AI</span>精準媒合人才與機會</div>
+      </div>
+      <div class="btn-group">
+        <button id="btn-company" class="main-btn">我是企業主</button>
+        <button id="btn-student" class="main-btn">我是學生</button>
+      </div>
+      <div class="arrow"></div>
+    </section>
+    <!-- 2. 企業主註冊頁 -->
+    <section id="company-register" class="page">
+      <div class="logo-title-row">
+        <h1 class="logo-title">TalenTag</h1>
+        <div class="logo-icon small"></div>
+      </div>
+      <form class="form-block">
+        <input type="text" placeholder="公司名稱">
+        <input type="text" placeholder="聯絡人姓名">
+        <input type="email" placeholder="電子郵件">
+        <input type="text" placeholder="產業類別">
+        <input type="text" placeholder="公司簡介">
+        <input type="password" placeholder="設定密碼 / 第三方登入">
+      </form>
+      <button id="company-next" class="main-btn">下一步</button>
+      <div class="arrow"></div>
+    </section>
+    <!-- 3. AI對話頁（企業主） -->
+    <section id="company-chat" class="page">
+      <div class="logo-title-row">
+        <h1 class="logo-title">TalenTag</h1>
+        <div class="logo-icon small"></div>
+      </div>
+      <div class="chat-area" id="company-chat-area">
+        <div class="chat-bubble ai">嗨，我會協助您快速找到合適的實習生！<br>我們先從了解您的職缺開始：<br><b>請問您目前想招募的職缺名稱是什麼？</b></div>
+        <div class="chat-bubble user">我想找行銷企劃的實習生</div>
+        <div class="chat-bubble ai">好的，那這個職缺的主要工作內容大概有哪些呢？<br>（您可以簡單描述，例如「剪短影音、上字幕、協助素材整理」）</div>
+        <div class="chat-bubble user">需要剪 TikTok 和 Reels 的短影音，幫忙找音樂、整理素材，上字幕。</div>
+        <div class="chat-bubble ai">了解了～這份工作偏向創意內容製作，我來幫您找適合的學生，接下來想請問：<br>您對這位實習生有沒有一些希望具備的特質或技能？<br>（如「細心」、「懂 Premiere」、「美感好」）</div>
+        <div class="chat-bubble user">會剪影片，最好有用過 Premiere，個性細心、有責任感。請推薦我十位人才</div>
+        <div class="chat-bubble ai loading"><span class="loading-spinner"></span> TalenTag AI Agent 正在為您媒合人才.....</div>
+      </div>
+    </section>
+    <!-- 4. 人才卡片頁（滑動） -->
+    <section id="talent-cards" class="page">
+      <div class="logo-title-row">
+        <h1 class="logo-title">TalenTag</h1>
+        <div class="logo-icon small"></div>
+      </div>
+      <div class="talent-cards-title">以下為您推薦第一批次的 10 位人選。</div>
+      <div class="talent-cards-area">
+        <!-- 卡片內容由 JS 動態插入 -->
+      </div>
+      <div class="talent-cards-controls">
+        <button id="card-prev" class="card-nav-btn">上一位</button>
+        <button id="card-next" class="card-nav-btn">下一位</button>
+      </div>
+      <form class="talent-card-input-area" onsubmit="return false;">
+        <input type="text" placeholder="加入更多條件" id="talent-card-input">
+        <button type="submit" id="talent-card-send">
+          <span class="send-icon"></span>
+        </button>
+      </form>
+    </section>
+    <!-- 8. 學生註冊頁 -->
+    <section id="student-register" class="page">
+      <div class="logo-title-row">
+        <h1 class="logo-title">TalenTag</h1>
+        <div class="logo-icon small"></div>
+      </div>
+      <form class="form-block">
+        <input type="text" placeholder="姓名">
+        <input type="email" placeholder="電子郵件">
+        <input type="text" placeholder="學校">
+        <input type="text" placeholder="科系">
+        <input type="text" placeholder="年級">
+        <input type="password" placeholder="設定密碼 / 第三方登入">
+      </form>
+      <button id="student-next" class="main-btn">下一步</button>
+      <div class="arrow"></div>
+    </section>
+    <!-- 9. 學生履歷填寫頁 -->
+    <section id="student-resume" class="page">
+      <div class="logo-title-row">
+        <h1 class="logo-title">TalenTag</h1>
+        <div class="logo-icon small"></div>
+      </div>
+      <div class="resume-progress">
+        <div class="resume-bar"><div class="resume-bar-inner" style="width:30%"></div></div>
+        <div class="resume-percent">履歷完成度30%</div>
+      </div>
+      <form class="form-block">
+        <input type="text" placeholder="個人簡介（100字自我介紹）">
+        <input type="text" placeholder="學經歷（學校、社團、打工、專案）">
+        <input type="text" placeholder="技能專長敘述">
+        <input type="text" placeholder="作品集連結">
+        <input type="text" placeholder="希望職務類型">
+        <input type="text" placeholder="可配合時間">
+        <input type="text" placeholder="希望實習地點">
+      </form>
+      <button id="resume-done" class="main-btn blue">我已做好自己的履歷</button>
+      <button id="resume-next" class="main-btn">下一步</button>
+    </section>
+    <!-- 10. 履歷進度頁（學生） -->
+    <section id="resume-progress" class="page">
+      <div class="logo-title-row">
+        <h1 class="logo-title">TalenTag</h1>
+        <div class="logo-icon small"></div>
+      </div>
+      <div class="resume-card">
+        <div class="resume-progress">
+          <div class="resume-bar"><div class="resume-bar-inner" style="width:30%"></div></div>
+          <div class="resume-percent">履歷完成度30%</div>
+        </div>
+        <div class="resume-list">
+          <button class="resume-item">個人簡介（100字自我介紹）</button>
+          <button class="resume-item">學經歷（學校、社團、打工、專案）</button>
+          <button class="resume-item">技能專長敘述</button>
+          <button class="resume-item">作品集連結</button>
+          <button class="resume-item">希望職務類型</button>
+          <button class="resume-item">可配合時間</button>
+          <button class="resume-item">希望實習地點</button>
+        </div>
+        <button id="resume-progress-next" class="main-btn">下一步</button>
+      </div>
+    </section>
+    <!-- 13. 學生推薦職缺頁（滑動卡片） -->
+    <section id="job-cards" class="page">
+      <div class="logo-title-row">
+        <h1 class="logo-title">TalenTag</h1>
+        <div class="logo-icon small"></div>
+      </div>
+      <div class="job-cards-title">以下為您推薦第一批次的 10 個職缺。</div>
+      <div class="job-cards-area">
+        <!-- 職缺卡片內容由 JS 動態插入 -->
+      </div>
+      <div class="job-cards-controls">
+        <button id="job-prev" class="card-nav-btn">上一個</button>
+        <button id="job-next" class="card-nav-btn">下一個</button>
+      </div>
+    </section>
+    <!-- 14. 求職動機填寫頁 -->
+    <section id="motivation" class="page">
+      <div class="logo-title-row">
+        <h1 class="logo-title">TalenTag</h1>
+        <div class="logo-icon small"></div>
+      </div>
+      <div class="resume-title">求職動機 / 期望發展方向</div>
+      <div class="resume-motivation-block">
+        <div class="resume-motivation-text">
+我是輔仁大學中文系大三的軒軒。擅長文字整理與內容發想，喜歡觀察生活、了解受眾需求。對行銷企劃充滿熱情，期待在實習中學習從市場調查、活動發想到文案撰寫的完整流程，培養實戰能力，未來希望朝品牌內容行銷或策略溝通方向發展，成為能兼具創意與邏輯的行銷人。
+        </div>
+      </div>
+      <button id="motivation-done" class="main-btn">完成</button>
+    </section>
+    <!-- 15. 完成頁 -->
+    <section id="finish" class="page">
+      <div class="logo-title-row">
+        <h1 class="logo-title">TalenTag</h1>
+        <div class="logo-icon small"></div>
+      </div>
+      <div class="finish-block">
+        <div class="finish-title">完成！</div>
+      </div>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html> 
